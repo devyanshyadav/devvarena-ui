@@ -1,0 +1,13 @@
+@keyframes rotate-hue {
+  to {
+    filter: hue-rotate(1turn);
+  }
+}
+
+.halo-animation::after {
+  animation: rotate-hue 500ms linear infinite paused;
+}
+
+.halo-animation:hover::after {
+  animation-play-state: running;
+}

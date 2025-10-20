@@ -1,0 +1,21 @@
+
+#!/bin/sh
+# Husky pre-commit hook for devvarena-ui-v1 component library
+
+echo "🔍 Running pre-commit checks..."
+
+# Check if package-lock.json was created and remove it
+if [ -f "package-lock.json" ]; then
+  echo "🚫 Detected package-lock.json - removing it (use bun instead of npm)"
+  rm package-lock.json
+fi
+
+# Check if yarn.lock was created and remove it
+if [ -f "yarn.lock" ]; then
+  echo "🚫 Detected yarn.lock - removing it (use bun instead of yarn)"
+  rm yarn.lock
+fi
+
+# Run lint-staged (includes linting, formatting, and type checking)
+echo "🎨 Running linting and formatting..."
+bunx lint-staged

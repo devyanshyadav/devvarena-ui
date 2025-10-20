@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(/D:\\Devyansh\\Personal Projects\\devvarena-ui-v1/**)",
+      "Read(/D:\\Devyansh\\Personal Projects\\devvarena-ui-v1/**)",
+      "Bash(bun add:*)",
+      "Read(/D:\\Devyansh\\Personal Projects\\devvarena-ui-v1/**)",
+      "Bash(npm run dev:*)",
+      "Bash(npm run lint)",
+      "Bash(del \"D:\\Devyansh\\Personal Projects\\devvarena-ui-v1\\src\\components\\docs\\rich-example-preview.tsx\")",
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(bun remove:*)",
+      "Bash(mkdir:*)",
+      "Bash(bun audit:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

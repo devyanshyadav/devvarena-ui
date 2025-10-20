@@ -1,0 +1,8 @@
+.next
+node_modules
+*.lock
+*.log
+dist
+build
+.env*
+public

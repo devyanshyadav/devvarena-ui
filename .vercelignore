@@ -1,0 +1,8 @@
+# CLI directory should not be built by Vercel
+cli/
+
+# Test directories
+test-component/
+
+# Development files
+.env.local
