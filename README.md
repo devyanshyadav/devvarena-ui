@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Devvarena UI
 
-## Getting Started
+![Devvarena UI Banner](./public/banner.png)
 
-First, run the development server:
+Beautiful and reusable React components built on top of [shadcn/ui](https://ui.shadcn.com). TypeScript-ready, customizable, and easy to integrate.
+
+## Features
+
+- ✨ **Built on shadcn/ui** - Leverages Radix UI primitives and Tailwind CSS
+- 🚀 **CLI Installation** - Install components via CLI (supports npm, yarn, pnpm, bun)
+- 📘 **TypeScript Support** - Full type safety with comprehensive interfaces
+- 🎨 **Customizable** - Easily customize colors, styles, and behaviors
+- 📦 **Component Categories** - Buttons, Cards, Menus, Alerts, and more
+
+## Installation
+
+### Prerequisites
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Requires shadcn/ui setup in your project
+npx shadcn@latest init
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Install Components
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Using npm
+npx devvarena-ui@latest add [component-name]
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Using yarn
+yarn dlx devvarena-ui@latest add [component-name]
 
-## Learn More
+# Using pnpm
+pnpm dlx devvarena-ui@latest add [component-name]
 
-To learn more about Next.js, take a look at the following resources:
+# Using bun
+bunx devvarena-ui@latest add [component-name]
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Quick Start
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Visit our [documentation](https://devvarena-ui.vercel.app/docs) to browse components and see live examples.
 
-## Deploy on Vercel
+## Development
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+# Install dependencies
+bun install
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Run development server
+bun dev
+
+# Build for production
+bun build
+
+# Run linting
+bun lint
+```
+
+## Tech Stack
+
+- **Framework:** Next.js 15
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS 4
+- **UI Library:** Radix UI
+- **Animation:** Framer Motion
+- **Icons:** Lucide React, React Icons
+
+## Project Structure
+
+```
+src/
+├── devvarena-ui/        # Component library
+│   ├── button/          # Button components
+│   ├── card/            # Card components
+│   ├── menu/            # Menu components
+│   └── alert/           # Alert components
+├── app/                 # Next.js app directory
+├── components/          # Internal components
+└── lib/                 # Utilities
+```
+
+## License
+
+MIT License - feel free to use in your projects!
+
+## Links
+
+- [Documentation](https://devvarena-ui.vercel.app/docs)
+- [Installation Guide](https://devvarena-ui.vercel.app/docs/installation)
+
+---
+
+Built with ❤️ using shadcn/ui
