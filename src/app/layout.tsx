@@ -114,8 +114,8 @@ export default function RootLayout({
           <main className="w-full">{children}</main>
           <Footer />
         </ThemeProvider>
-        {GA_MEASUREMENT_ID && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />}
       </body>
+      {GA_MEASUREMENT_ID && <GoogleAnalytics gaId={GA_MEASUREMENT_ID} />}
     </html>
   );
 }
