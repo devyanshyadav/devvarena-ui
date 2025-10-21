@@ -26,7 +26,7 @@ const Menu = () => {
         className="flex w-10 h-10 rounded-full"
       >
         <Link
-          href="https://github.com"
+          href="https://github.com/devyanshyadav/devvarena-ui"
           target="_blank"
           rel="noopener noreferrer"
         >

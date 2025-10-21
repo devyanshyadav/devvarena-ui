@@ -57,7 +57,7 @@ const ResponsiveNav = ({ navigation }: ResponsiveNavProps) => {
 
           <div className="border-t pt-3">
             <Link
-              href="https://github.com"
+              href="https://github.com/devyanshyadav/devvarena-ui"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setIsOpen(false)}
