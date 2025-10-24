@@ -7,6 +7,11 @@ export const metadata: ExampleMetadata = {
   category: "Form",
   tags: ["button", "glow", "gradient", "radial", "animation", "interactive"],
   relatedExamples: ["base-button", "ripple-button", "halo-button"],
+  credit: {
+    name: "@ShruPosts",
+    type: "design",
+    url: "https://x.com/ShruPosts/status/1966507126928580909",
+  },
   components: [
     {
       id: "v1",

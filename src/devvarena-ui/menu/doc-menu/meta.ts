@@ -7,6 +7,11 @@ export const metadata: ExampleMetadata = {
   category: "Navigation",
   tags: ["menu", "avatar", "collaboration", "invite", "share", "document"],
   relatedExamples: ["avatar-group", "user-list", "team-menu"],
+  credit: {
+    name: "@Neesh774",
+    type: "design",
+    url: "https://x.com/Neesh774/status/1978245607769677927",
+  },
   components: [
     {
       id: "v1",

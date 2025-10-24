@@ -18,6 +18,7 @@ import { File, FileText, Image, Code } from "lucide-react";
 import { cn } from "@/lib/utils";
 import CopyCli from "./copy-cli";
 import { IoCheckmarkDone, IoCopyOutline } from "react-icons/io5";
+import Link from "next/link";
 
 interface ComponentPageClientProps {
   componentDoc: ComponentDoc;
@@ -56,16 +57,20 @@ export function ComponentPageClient({
     }
   }, [componentVersions, selectedFile]);
 
+  const credit = componentDoc.metadata?.credit;
+
   return (
     <div className="container mx-auto max-w-7xl">
       {/* Minimalist Header */}
-      <div className="mb-5">
-        <h1 className="text-2xl font-semibold mb-4">
-          {componentDoc.displayName}
-        </h1>
-        {/* <p className="text-base text-muted-foreground max-w-2xl  leading-relaxed">
-          {componentDoc.description}
-        </p> */}
+      <div className="mb-5 flex items-start justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-semibold mb-4">
+            {componentDoc.displayName}
+          </h1>
+          {/* <p className="text-base text-muted-foreground max-w-2xl  leading-relaxed">
+            {componentDoc.description}
+          </p> */}
+        </div>
       </div>
 
       {/* Component Sections - Each component gets its own tab section */}
@@ -244,6 +249,18 @@ export function ComponentPageClient({
                   </TabsContent>
                 )}
               </Tabs>
+              {credit && (
+                <div className="text-xs ml-2 text-muted-foreground flex gap-1 items-center whitespace-nowrap">
+                  <p className="capitalize">{credit.type} Credits • </p>
+                  <Link
+                    className="underline underline-offset-3 hover:text-primary"
+                    target="_blank"
+                    href={credit.url || "#"}
+                  >
+                    {credit.name}
+                  </Link>
+                </div>
+              )}
             </div>
           );
         })}

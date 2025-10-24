@@ -7,6 +7,11 @@ export const metadata: ExampleMetadata = {
   category: "E-commerce",
   tags: ["card", "product", "animation", "cart", "e-commerce", "framer-motion"],
   relatedExamples: ["cart-icon", "product-card", "shopping-cart"],
+  credit: {
+    name: "@jh3yy",
+    type: "design",
+    url: "https://x.com/jh3yy/status/1979343730483302475",
+  },
   components: [
     {
       id: "v1",

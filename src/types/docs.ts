@@ -1,10 +1,24 @@
 // Documentation metadata types
+export interface Credit {
+  name: string;
+  type:
+    | "inspiration"
+    | "code"
+    | "design"
+    | "article"
+    | "video"
+    | "tutorial"
+    | "other";
+  url?: string;
+}
+
 export interface ExampleMetadata {
   title: string;
   description: string;
   category?: string;
   tags?: string[];
   relatedExamples?: string[];
+  credit?: Credit;
   components: ComponentVersion[]; // Required - minimum one component version
 }
 

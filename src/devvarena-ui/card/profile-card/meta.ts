@@ -7,6 +7,11 @@ export const metadata: ExampleMetadata = {
   category: "Display",
   tags: ["card", "profile", "user", "avatar", "contact", "stats"],
   relatedExamples: ["base-card", "feature-card", "product-card"],
+  credit: {
+    name: "Pinterest",
+    type: "design",
+    url: "https://x.com/Pinterest",
+  },
   components: [
     {
       id: "v1",
@@ -127,6 +132,7 @@ export const metadata: ExampleMetadata = {
           required: false,
         },
       ],
+
       notes: [
         "Built on shadcn/ui Card components with enhanced visual design and customization options",
         "Gradient background design using from-secondary to-card with rounded-[40px] corners",
