@@ -1,6 +1,6 @@
-import { ExampleMetadata } from "@/types/docs";
+import { Metadata } from "@/types/docs";
 
-export const metadata: ExampleMetadata = {
+export const metadata: Metadata = {
   title: "Laser Input",
   description:
     "Interactive input component with laser tracking effects that follow mouse movement. Features customizable laser colors, size variants, and dynamic gradient generation based on cursor position.",

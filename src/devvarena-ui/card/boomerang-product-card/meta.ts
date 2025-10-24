@@ -1,6 +1,6 @@
-import { ExampleMetadata } from "@/types/docs";
+import { Metadata } from "@/types/docs";
 
-export const metadata: ExampleMetadata = {
+export const metadata: Metadata = {
   title: "Boomerang Product Card",
   description:
     "Interactive e-commerce product card with animated add-to-cart feature. Includes CartIcon component with beating badge animation. Features configurable Framer Motion animations with preset options (boomerang, arc, swoosh, bounce, spiral, straight).",

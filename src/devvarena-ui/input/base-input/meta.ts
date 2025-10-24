@@ -1,6 +1,6 @@
-import { ExampleMetadata } from "@/types/docs";
+import { Metadata } from "@/types/docs";
 
-export const metadata: ExampleMetadata = {
+export const metadata: Metadata = {
   title: "Base Input",
   description:
     "Enhanced input component with multiple styling variants and configurable icon positioning. Extends shadcn/ui Input with additional visual options and interactive effects.",

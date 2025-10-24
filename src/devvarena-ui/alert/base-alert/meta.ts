@@ -1,6 +1,6 @@
-import { ExampleMetadata } from "@/types/docs";
+import { Metadata } from "@/types/docs";
 
-export const metadata: ExampleMetadata = {
+export const metadata: Metadata = {
   title: "Base Alert",
   description:
     "Enhanced alert component with gradient backgrounds, semantic variants, customizable icon shapes, and flexible content support. Built on shadcn/ui Alert with visual styling improvements.",

@@ -12,7 +12,7 @@ export interface Credit {
   url?: string;
 }
 
-export interface ExampleMetadata {
+export interface Metadata {
   title: string;
   description: string;
   category?: string;
@@ -54,7 +54,7 @@ export interface ComponentExample {
   tags?: string[];
   filename: string;
   code: string;
-  metadata?: ExampleMetadata | null; // some examples have null
+  metadata?: Metadata | null; // some examples have null
   props?: PropDocumentation[];
   usage?: UsageExample[];
   notes?: string[];

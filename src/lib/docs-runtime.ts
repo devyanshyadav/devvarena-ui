@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import type { ExampleMetadata } from "@/types/docs";
+import type { Metadata } from "@/types/docs";
 
 export interface ComponentInfo {
   id: string; // e.g., "button/rainbow-button"
@@ -18,11 +18,11 @@ export interface ComponentDoc {
   dependencies: string[];
   componentCode: string; // code from component.tsx
   usageCode: string; // code from usage.tsx
-  metadata: ExampleMetadata | null; // from meta.ts
+  metadata: Metadata | null; // from meta.ts
   generatedAt: string;
 }
 
-function readMetaFile(metaPath: string): ExampleMetadata | null {
+function readMetaFile(metaPath: string): Metadata | null {
   try {
     if (!fs.existsSync(metaPath)) {
       return null;
@@ -32,7 +32,7 @@ function readMetaFile(metaPath: string): ExampleMetadata | null {
 
     // Find the start of the metadata object
     const startMatch = metaContent.match(
-      /export\s+const\s+metadata:\s*ExampleMetadata\s*=\s*{/
+      /export\s+const\s+metadata:\s*Metadata\s*=\s*{/
     );
     if (!startMatch) {
       return null;

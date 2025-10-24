@@ -1,6 +1,6 @@
-import { ExampleMetadata } from "@/types/docs";
+import { Metadata } from "@/types/docs";
 
-export const metadata: ExampleMetadata = {
+export const metadata: Metadata = {
   title: "Doc Menu",
   description:
     "Collaborative document menu component featuring horizontal avatar list with masked overflow, action buttons for sharing and inviting. Perfect for document collaboration interfaces and team management.",

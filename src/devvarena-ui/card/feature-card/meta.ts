@@ -1,6 +1,6 @@
-import { ExampleMetadata } from "@/types/docs";
+import { Metadata } from "@/types/docs";
 
-export const metadata: ExampleMetadata = {
+export const metadata: Metadata = {
   title: "Feature Card",
   description:
     "Modern feature card component with gradient borders, layered icon effects, and customizable styling. Perfect for showcasing key features, services, or benefits with an eye-catching design.",

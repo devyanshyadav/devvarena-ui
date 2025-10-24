@@ -1,6 +1,6 @@
-import { ExampleMetadata } from "@/types/docs";
+import { Metadata } from "@/types/docs";
 
-export const metadata: ExampleMetadata = {
+export const metadata: Metadata = {
   title: "Halo Button",
   description:
     "Beautiful button component with gradient halo effects around the button border. Features customizable gradient colors and border radius options using CSS pseudo-elements.",

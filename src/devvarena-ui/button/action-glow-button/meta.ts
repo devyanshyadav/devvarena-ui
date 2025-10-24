@@ -1,6 +1,6 @@
-import { ExampleMetadata } from "@/types/docs";
+import { Metadata } from "@/types/docs";
 
-export const metadata: ExampleMetadata = {
+export const metadata: Metadata = {
   title: "Action Glow Button",
   description:
     "Premium button component with radial gradient glow effects and smooth animations. Features layered design with outer glow wrapper and inner content styling for enhanced visual impact.",

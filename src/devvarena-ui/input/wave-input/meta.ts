@@ -1,6 +1,6 @@
-import { ExampleMetadata } from "@/types/docs";
+import { Metadata } from "@/types/docs";
 
-export const metadata: ExampleMetadata = {
+export const metadata: Metadata = {
   title: "Wave Input",
   description:
     "Input component with animated wave label effects where each character moves individually with staggered timing. Features multiple variants, icon support, and customizable wave animation delays.",

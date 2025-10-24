@@ -1,6 +1,6 @@
-import { ExampleMetadata } from "@/types/docs";
+import { Metadata } from "@/types/docs";
 
-export const metadata: ExampleMetadata = {
+export const metadata: Metadata = {
   title: "Floating Label Input",
   description:
     "Enhanced input component with animated floating labels that move when focused or filled. Features multiple variants, icon support, and customizable label transform origin for smooth animations.",

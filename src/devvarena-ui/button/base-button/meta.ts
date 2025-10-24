@@ -1,6 +1,6 @@
-import { ExampleMetadata } from "@/types/docs";
+import { Metadata } from "@/types/docs";
 
-export const metadata: ExampleMetadata = {
+export const metadata: Metadata = {
   title: "Base Button",
   description:
     "Enhanced button component with gradient backgrounds, special hover effects, and customizable styling. Extends shadcn/ui Button with visual enhancements and interactive effects.",

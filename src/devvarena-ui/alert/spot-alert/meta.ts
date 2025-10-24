@@ -1,6 +1,6 @@
-import { ExampleMetadata } from "@/types/docs";
+import { Metadata } from "@/types/docs";
 
-export const metadata: ExampleMetadata = {
+export const metadata: Metadata = {
   title: "Spot Alert",
   description:
     "Modern alert component with distinctive circular overlapping background design and semantic variants. Features unique floating circular icons with layered opacity effects and flexible content support.",

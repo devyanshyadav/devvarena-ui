@@ -1,6 +1,6 @@
-import { ExampleMetadata } from "@/types/docs";
+import { Metadata } from "@/types/docs";
 
-export const metadata: ExampleMetadata = {
+export const metadata: Metadata = {
   title: "Ripple Button",
   description:
     "Interactive button component with Material Design ripple effects. Combines shadcn/ui Button compatibility with BaseButton gradient features and customizable ripple animations.",
