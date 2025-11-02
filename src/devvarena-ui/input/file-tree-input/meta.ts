@@ -14,11 +14,6 @@ export const metadata: Metadata = {
     "navigation",
   ],
   relatedExamples: ["base-input", "floating-label-input", "laser-input"],
-  credit: {
-    name: "Hierarchical Tree Structure Design",
-    type: "design",
-    url: "https://github.com",
-  },
   components: [
     {
       id: "v1",
