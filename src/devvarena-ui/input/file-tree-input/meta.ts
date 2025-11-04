@@ -25,7 +25,7 @@ export const metadata: Metadata = {
           name: "data",
           type: "FileTreeNode[]",
           description:
-            "Tree nodes array with structure: { id, label, icon?, children? }",
+            "Tree nodes array with structure: { id, label, icon?, children? }. Icon can be ReactNode or { open: ReactNode, close: ReactNode }",
           required: true,
         },
         {
@@ -75,15 +75,17 @@ export const metadata: Metadata = {
       ],
       notes: [
         "**Node Structure**: Requires { id, label } with optional icon and children array",
+        "**Icon States**: Icons can be static (ReactNode) or state-aware ({ open, close }) for folders",
         "**Expandable**: Folders with children can be expanded/collapsed with smooth animations",
+        "**Initial State**: Use initialExpandedNodes prop to expand specific folders on render",
         "**Selection**: Click nodes to select, returns both id and full file path",
         "**Path Tracking**: Automatically builds paths like src/app/layout.tsx",
         "**Size Variants**: sm (px-2 py-0.5), md (px-3 py-1), lg (px-4 py-1.5)",
-        "**Icons**: Fully customizable expand/collapse and leaf node icons",
+        "**Icons**: Fully customizable icons per node, with separate open/close states for folders",
         "**Styling**: Uses Tailwind CSS with semantic tokens and hover effects",
         "**Nesting**: Supports unlimited hierarchy depth for complex structures",
         "**TypeScript**: Full type safety with FileTreeNode and FileTreeSelection",
-        "**Accessibility**: Semantic HTML with ul/li structure",
+        "**Accessibility**: Built on shadcn Accordion with full keyboard navigation support",
       ],
     },
   ],

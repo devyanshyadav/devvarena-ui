@@ -11,7 +11,12 @@ import {
 export type FileTreeNode = {
   id: string;
   label: string;
-  icon?: React.ReactNode;
+  icon?:
+    | React.ReactNode
+    | {
+        open: React.ReactNode;
+        close: React.ReactNode;
+      };
   children?: FileTreeNode[];
 };
 
@@ -49,6 +54,21 @@ const getSizeClasses = (size: "sm" | "md" | "lg" = "md") => {
   return sizeMap[size];
 };
 
+const getIconForState = (
+  icon:
+    | React.ReactNode
+    | { open: React.ReactNode; close: React.ReactNode }
+    | undefined,
+  isOpen: boolean,
+  fallback?: React.ReactNode
+): React.ReactNode => {
+  if (!icon) return fallback;
+  if (typeof icon === "object" && "open" in icon && "close" in icon) {
+    return isOpen ? icon.open : icon.close;
+  }
+  return icon;
+};
+
 interface TreeNodeComponentProps {
   node: FileTreeNode;
   parentPath: string;
@@ -75,6 +95,7 @@ const TreeNodeComponent: React.FC<TreeNodeComponentProps> = ({
   const sizeClasses = getSizeClasses(size);
   const currentPath = parentPath ? `${parentPath}/${node.id}` : node.id;
   const hasChildren = (node.children || []).length > 0;
+
   const handleSelect = () => {
     onSelect({
       id: node.id,
@@ -84,6 +105,7 @@ const TreeNodeComponent: React.FC<TreeNodeComponentProps> = ({
 
   if (!hasChildren) {
     // Leaf node - simple clickable item with icon on left
+    const displayIcon = getIconForState(node.icon, false, childrenIcon);
     return (
       <button
         onClick={handleSelect}
@@ -93,7 +115,7 @@ const TreeNodeComponent: React.FC<TreeNodeComponentProps> = ({
           value === currentPath ? "!bg-secondary *:opacity-100" : "*:opacity-70"
         }`}
       >
-        <span className="shrink-0">{node.icon || childrenIcon}</span>
+        <span className="shrink-0">{displayIcon}</span>
         <span className={sizeClasses.text}>{node.label}</span>
       </button>
     );
@@ -107,7 +129,7 @@ const TreeNodeComponent: React.FC<TreeNodeComponentProps> = ({
         <AccordionTrigger
           className={`justify-start w-60 select-none gap-2 ${
             sizeClasses.padding
-          } rounded-md hover:bg-secondary/30 border border-transparent hover:bg-gradient-to-r from-secondary to-secondary/10 !bg-transparent hover:border-border/50 hover:no-underline [&[data-state=open]]:bg-secondary/20 [&[data-state=closed]>.flex>.icon-container>.icon-open]:hidden [&[data-state=open]>.flex>.icon-container>.icon-close]:hidden  [&>svg]:-order-1 [&[data-state=closed]>svg]:-rotate-90 hover:*:translate-x-1 *:transition-all [&[data-state=open]>svg]:rotate-0 m-0.5  ${
+          } rounded-md hover:bg-secondary/30 border border-transparent hover:bg-gradient-to-r from-secondary to-secondary/10 !bg-transparent hover:border-border/50 hover:no-underline [&[data-state=open]]:bg-secondary/20 [&>svg]:-order-1 [&[data-state=closed]>svg]:-rotate-90 hover:*:translate-x-1 *:transition-all [&[data-state=open]>svg]:rotate-0 m-0.5 [&[data-state=closed]>.flex>.icon-close]:block [&[data-state=closed]>.flex>.icon-open]:hidden [&[data-state=open]>.flex>.icon-close]:hidden [&[data-state=open]>.flex>.icon-open]:block ${
             value === currentPath
               ? "!bg-secondary *:opacity-100"
               : "*:opacity-70"
@@ -115,14 +137,16 @@ const TreeNodeComponent: React.FC<TreeNodeComponentProps> = ({
           onClick={handleSelect}
         >
           <span className="flex items-center gap-2 shrink-0">
-            <span className="icon-container">
-              <span className="icon-close">{iconOnClose || node.icon}</span>
-              <span className="icon-open">{iconOnOpen || node.icon}</span>
+            <span className="shrink-0 icon-close">
+              {getIconForState(node.icon, false, iconOnClose)}
+            </span>
+            <span className="shrink-0 icon-open hidden">
+              {getIconForState(node.icon, true, iconOnOpen)}
             </span>
             <span className={sizeClasses.text}>{node.label}</span>
           </span>
         </AccordionTrigger>
-        <AccordionContent className=" pb-0 px-0">
+        <AccordionContent className="pb-0 px-0">
           <div className="space-y-0 border-l border-border/80 ml-5 m-0.5">
             {node.children?.map((child) => (
               <TreeNodeComponent

@@ -2,19 +2,22 @@
 
 import React, { useState } from "react";
 import { FileTreeInputV1, type FileTreeNode } from "./component";
-import { FiFolder, FiFile, FiFileText } from "react-icons/fi";
+import { FiFile, FiFileText } from "react-icons/fi";
 import { LucideFolder, LucideFolderOpen } from "lucide-react";
 
 const projectStructure: FileTreeNode[] = [
   {
     id: "src",
     label: "src",
-    icon: <FiFolder className="w-4 h-4 text-amber-500" />,
+
     children: [
       {
         id: "app",
         label: "app",
-        icon: <FiFolder className="w-4 h-4 text-amber-500" />,
+        icon: {
+          open: <LucideFolderOpen className="w-4 h-4 text-amber-500" />,
+          close: <LucideFolder className="w-4 h-4 text-amber-500" />,
+        },
         children: [
           {
             id: "layout",
@@ -36,7 +39,6 @@ const projectStructure: FileTreeNode[] = [
       {
         id: "components",
         label: "components",
-        icon: <FiFolder className="w-4 h-4 text-amber-500" />,
         children: [
           {
             id: "button",
@@ -53,7 +55,6 @@ const projectStructure: FileTreeNode[] = [
       {
         id: "lib",
         label: "lib",
-        icon: <FiFolder className="w-4 h-4 text-amber-500" />,
         children: [
           {
             id: "utils",
@@ -67,12 +68,10 @@ const projectStructure: FileTreeNode[] = [
   {
     id: "public",
     label: "public",
-    icon: <FiFolder className="w-4 h-4 text-amber-500" />,
     children: [
       {
         id: "favicon",
         label: "favicon.ico",
-        icon: <FiFile className="w-4 h-4 text-gray-500" />,
       },
     ],
   },
@@ -94,9 +93,10 @@ export default function FileTreeInputV1Usage() {
       <FileTreeInputV1
         data={projectStructure}
         value={selection?.path || null}
-        initialExpandedNodes={["src", "app"]}
         iconOnOpen={<LucideFolderOpen className="w-4 h-4" />}
         iconOnClose={<LucideFolder className="w-4 h-4" />}
+        childrenIcon={<FiFile className="w-4 h-4 text-gray-500" />}
+        initialExpandedNodes={["src", "app"]}
         onChange={(selection) => setSelection(selection)}
       />
       {selection?.id && (
