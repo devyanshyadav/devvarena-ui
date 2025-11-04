@@ -35,6 +35,12 @@ export const metadata: Metadata = {
           required: false,
         },
         {
+          name: "value",
+          type: "string | null",
+          description: "Selected node path",
+          required: false,
+        },
+        {
           name: "onChange",
           type: "(selection: FileTreeSelection) => void",
           description:
