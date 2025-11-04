@@ -93,6 +93,7 @@ export default function FileTreeInputV1Usage() {
     <div className="flex gap-4 flex-col mx-auto max-w-60">
       <FileTreeInputV1
         data={projectStructure}
+        value={selection?.path || null}
         initialExpandedNodes={["src", "app"]}
         iconOnOpen={<LucideFolderOpen className="w-4 h-4" />}
         iconOnClose={<LucideFolder className="w-4 h-4" />}

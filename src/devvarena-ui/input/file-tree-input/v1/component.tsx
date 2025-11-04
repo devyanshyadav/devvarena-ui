@@ -1,7 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { FiChevronDown, FiChevronRight } from "react-icons/fi";
+import React from "react";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
 
 export type FileTreeNode = {
   id: string;
@@ -15,170 +20,161 @@ export type FileTreeSelection = {
   path: string | null;
 };
 
-type TreeState = {
-  expanded: string[];
-  selected: string | null;
-};
-
 interface FileTreeInputProps {
   data: FileTreeNode[];
-  initialExpandedNodes?: string[];
   onChange?: (selection: FileTreeSelection) => void;
+  childrenIcon?: React.ReactNode;
+  initialExpandedNodes?: string[];
   iconOnOpen?: React.ReactNode;
   iconOnClose?: React.ReactNode;
-  childrenIcon?: React.ReactNode;
+  value?: string | null;
   size?: "sm" | "md" | "lg";
-}
-
-interface TreeNodeProps {
-  node: FileTreeNode;
-  state: TreeState;
-  onAction: (type: "toggle" | "select", id: string, path?: string) => void;
-  iconOnOpen?: React.ReactNode;
-  iconOnClose?: React.ReactNode;
-  childrenIcon?: React.ReactNode;
-  size?: "sm" | "md" | "lg";
-  parentPath?: string;
 }
 
 const getSizeClasses = (size: "sm" | "md" | "lg" = "md") => {
   const sizeMap = {
-    sm: { padding: "px-2 py-0.5", text: "text-xs", icon: "text-base" },
-    md: { padding: "px-3 py-1", text: "text-sm", icon: "text-lg" },
-    lg: { padding: "px-4 py-1.5", text: "text-base", icon: "text-xl" },
+    sm: {
+      padding: "px-2 py-0.5",
+      text: "text-xs",
+    },
+    md: {
+      padding: "px-3 py-1",
+      text: "text-sm",
+    },
+    lg: {
+      padding: "px-4 py-1.5",
+      text: "text-base",
+    },
   };
   return sizeMap[size];
 };
 
-const TreeNode: React.FC<TreeNodeProps> = ({
+interface TreeNodeComponentProps {
+  node: FileTreeNode;
+  parentPath: string;
+  onSelect: (selection: FileTreeSelection) => void;
+  childrenIcon?: React.ReactNode;
+  initialExpandedNodes?: string[];
+  iconOnOpen?: React.ReactNode;
+  iconOnClose?: React.ReactNode;
+  value?: string | null;
+  size?: "sm" | "md" | "lg";
+}
+
+const TreeNodeComponent: React.FC<TreeNodeComponentProps> = ({
   node,
-  state,
-  onAction,
-  iconOnOpen = <FiChevronDown />,
-  iconOnClose = <FiChevronRight />,
+  parentPath,
+  onSelect,
   childrenIcon,
+  initialExpandedNodes = [],
+  iconOnOpen,
+  iconOnClose,
+  value = null,
   size = "md",
-  parentPath = "",
 }) => {
-  const isExpanded = state.expanded.includes(node.id);
-  const isSelected = state.selected === node.id;
-  const hasChildren = (node.children || []).length > 0;
   const sizeClasses = getSizeClasses(size);
   const currentPath = parentPath ? `${parentPath}/${node.id}` : node.id;
+  const hasChildren = (node.children || []).length > 0;
+  const handleSelect = () => {
+    onSelect({
+      id: node.id,
+      path: currentPath,
+    });
+  };
+
+  if (!hasChildren) {
+    // Leaf node - simple clickable item with icon on left
+    return (
+      <button
+        onClick={handleSelect}
+        className={`flex items-center border border-transparent hover:bg-gradient-to-r from-secondary to-secondary/10 hover:border-border/50 hover:*:translate-x-1 *:transition-all justify-start select-none gap-2 w-full m-0.5 ${
+          sizeClasses.padding
+        } rounded-md cursor-pointer hover:bg-secondary/30 transition-colors text-left ${
+          value === currentPath ? "!bg-secondary *:opacity-100" : "*:opacity-70"
+        }`}
+      >
+        <span className="shrink-0">{node.icon || childrenIcon}</span>
+        <span className={sizeClasses.text}>{node.label}</span>
+      </button>
+    );
+  }
+
+  const defaultValue = initialExpandedNodes.includes(node.id) ? node.id : null;
 
   return (
-    <li>
-      <div
-        className={`flex  items-center hover:*:translate-x-1 *:transition-all m-0.5 select-none gap-2 ${sizeClasses.padding} rounded-md cursor-pointer hover:bg-gradient-to-r from-secondary to-secondary/10 group border border-transparent hover:border-secondary  ${
-          isSelected ? "bg-secondary border" : ""
-        }`}
-        onClick={() => {
-          onAction("toggle", node.id, currentPath);
-          onAction("select", node.id, currentPath);
-        }}
-      >
-        {hasChildren ? (
-          <span
-            className={`flex-shrink-0 transition-colors ${sizeClasses.icon}`}
-          >
-            {isExpanded ? iconOnOpen : iconOnClose}
-          </span>
-        ) : (
-          <span className="w-fit flex-shrink-0">
-            {node.icon || childrenIcon}
-          </span>
-        )}
-        <span className={sizeClasses.text}>{node.label}</span>
-      </div>
-
-      {hasChildren && (
-        <div
-          className={`ml-4 border-l group-hover:border-l-secondary transition-all duration-300 ${
-            isExpanded
-              ? "max-h-[1000px] opacity-100 "
-              : "max-h-0 overflow-hidden  opacity-0"
+    <Accordion type="single" collapsible defaultValue={defaultValue || ""}>
+      <AccordionItem value={node.id} className="border-0">
+        <AccordionTrigger
+          className={`justify-start w-60 select-none gap-2 ${
+            sizeClasses.padding
+          } rounded-md hover:bg-secondary/30 border border-transparent hover:bg-gradient-to-r from-secondary to-secondary/10 !bg-transparent hover:border-border/50 hover:no-underline [&[data-state=open]]:bg-secondary/20 [&[data-state=closed]>.flex>.icon-container>.icon-open]:hidden [&[data-state=open]>.flex>.icon-container>.icon-close]:hidden  [&>svg]:-order-1 [&[data-state=closed]>svg]:-rotate-90 hover:*:translate-x-1 *:transition-all [&[data-state=open]>svg]:rotate-0 m-0.5  ${
+            value === currentPath
+              ? "!bg-secondary *:opacity-100"
+              : "*:opacity-70"
           }`}
+          onClick={handleSelect}
         >
-          <ul>
+          <span className="flex items-center gap-2 shrink-0">
+            <span className="icon-container">
+              <span className="icon-close">{iconOnClose || node.icon}</span>
+              <span className="icon-open">{iconOnOpen || node.icon}</span>
+            </span>
+            <span className={sizeClasses.text}>{node.label}</span>
+          </span>
+        </AccordionTrigger>
+        <AccordionContent className=" pb-0 px-0">
+          <div className="space-y-0 border-l border-border/80 ml-5 m-0.5">
             {node.children?.map((child) => (
-              <TreeNode
+              <TreeNodeComponent
                 key={child.id}
                 node={child}
-                state={state}
-                onAction={onAction}
+                parentPath={currentPath}
+                onSelect={onSelect}
+                childrenIcon={childrenIcon}
+                initialExpandedNodes={initialExpandedNodes}
+                size={size}
                 iconOnOpen={iconOnOpen}
                 iconOnClose={iconOnClose}
-                childrenIcon={childrenIcon}
-                size={size}
-                parentPath={currentPath}
+                value={value}
               />
             ))}
-          </ul>
-        </div>
-      )}
-    </li>
+          </div>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
   );
 };
 
 const FileTreeInputV1: React.FC<FileTreeInputProps> = ({
   data,
-  initialExpandedNodes = [],
   onChange,
+  childrenIcon,
+  initialExpandedNodes = [],
   iconOnOpen,
   iconOnClose,
-  childrenIcon,
+  value = null,
   size = "md",
 }) => {
-  const [state, setState] = useState<TreeState>({
-    expanded: initialExpandedNodes,
-    selected: null,
-  });
-
-  const handleAction = (
-    type: "toggle" | "select",
-    id: string,
-    path?: string
-  ) => {
-    setState((prev) => {
-      const newState =
-        type === "toggle"
-          ? {
-              ...prev,
-              expanded: prev.expanded.includes(id)
-                ? prev.expanded.filter((i) => i !== id)
-                : [...prev.expanded, id],
-            }
-          : {
-              ...prev,
-              selected: id,
-            };
-
-      if (type === "select") {
-        onChange?.({
-          id: newState.selected,
-          path: path || null,
-        });
-      }
-      return newState;
-    });
+  const handleSelect = (selection: FileTreeSelection) => {
+    onChange?.(selection);
   };
 
   return (
-    <div className="rounded-xl shadow-sm bg-card p-2 max-w-64 border border-border/50">
-      <ul className="space-y-1">
-        {data.map((node) => (
-          <TreeNode
-            key={node.id}
-            node={node}
-            state={state}
-            onAction={handleAction}
-            iconOnOpen={iconOnOpen}
-            iconOnClose={iconOnClose}
-            childrenIcon={childrenIcon}
-            size={size}
-          />
-        ))}
-      </ul>
+    <div className="rounded-xl bg-card shadow-sm p-2 border border-border space-y-1 ">
+      {data.map((node) => (
+        <TreeNodeComponent
+          key={node.id}
+          node={node}
+          parentPath=""
+          onSelect={handleSelect}
+          childrenIcon={childrenIcon}
+          initialExpandedNodes={initialExpandedNodes}
+          size={size}
+          iconOnOpen={iconOnOpen}
+          iconOnClose={iconOnClose}
+          value={value}
+        />
+      ))}
     </div>
   );
 };
