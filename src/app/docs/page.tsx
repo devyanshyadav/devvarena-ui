@@ -1,4 +1,3 @@
-import React from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import BaseButton from "@/devvarena-ui/button/base-button/v1/component";

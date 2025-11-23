@@ -1,4 +1,3 @@
-import React from "react";
 import FloatingLabelInputV1 from "./component";
 import { Search, Mail, Eye, Lock, User, Phone } from "lucide-react";
 

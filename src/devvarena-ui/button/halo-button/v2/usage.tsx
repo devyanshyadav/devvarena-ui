@@ -1,4 +1,3 @@
-import React from "react";
 import HaloButtonv2 from "./component";
 
 const AuroraButtonUsage = () => {

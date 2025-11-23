@@ -1,4 +1,3 @@
-import React from "react";
 import BaseButton from "./component";
 import { Plus, Download, Heart, Settings, Trash2 } from "lucide-react";
 

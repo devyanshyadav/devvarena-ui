@@ -1,4 +1,3 @@
-import React from "react";
 import Menu from "./menu";
 import Link from "next/link";
 import Image from "next/image";

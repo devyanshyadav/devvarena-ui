@@ -1,7 +1,5 @@
 
 #!/bin/sh
-# Husky pre-commit hook for devvarena-ui-v1 component library
-
 echo "🔍 Running pre-commit checks..."
 
 # Check if package-lock.json was created and remove it
@@ -16,6 +14,12 @@ if [ -f "yarn.lock" ]; then
   rm yarn.lock
 fi
 
-# Run lint-staged (includes linting, formatting, and type checking)
-echo "🎨 Running linting and formatting..."
-bunx lint-staged
+# Run biome format to auto-fix formatting
+echo "🎨 Running biome format..."
+bunx biome format --write
+
+git add .
+
+# Run biome check to verify no errors remain
+echo "🔍 Running biome check for errors..."
+bunx biome check

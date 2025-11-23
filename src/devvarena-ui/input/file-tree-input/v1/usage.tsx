@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { FileTreeInputV1, type FileTreeNode } from "./component";
 import { FiFile, FiFileText } from "react-icons/fi";
 import { LucideFolder, LucideFolderOpen } from "lucide-react";

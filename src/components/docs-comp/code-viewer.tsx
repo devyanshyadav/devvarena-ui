@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { FileItem } from "./file-explorer";

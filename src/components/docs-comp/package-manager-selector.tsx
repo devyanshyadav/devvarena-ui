@@ -1,4 +1,3 @@
-import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { IoCheckmarkDone, IoCopyOutline } from "react-icons/io5";
 import { cn } from "@/lib/utils";

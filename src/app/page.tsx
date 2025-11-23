@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import HaloButtonv1 from "@/devvarena-ui/button/halo-button/v1/component";

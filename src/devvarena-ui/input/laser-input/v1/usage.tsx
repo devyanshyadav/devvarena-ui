@@ -1,4 +1,3 @@
-import React from "react";
 import LaserInputV1 from "./component";
 import { Eye, Search } from "lucide-react";
 

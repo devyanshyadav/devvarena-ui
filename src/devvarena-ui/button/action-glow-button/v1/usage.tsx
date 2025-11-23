@@ -1,4 +1,3 @@
-import React from "react";
 import ActionGlowButtonV1 from "./component";
 
 const ActionGlowUsageV1 = () => {

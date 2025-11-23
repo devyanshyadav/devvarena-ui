@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ProfileCard from "./component";
 import { TbBrandAdobe } from "react-icons/tb";
 

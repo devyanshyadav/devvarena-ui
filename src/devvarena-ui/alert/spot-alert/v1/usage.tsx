@@ -1,4 +1,3 @@
-import React from "react";
 import SpotAlertV1 from "./component";
 import { Heart, Star, Zap, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";

@@ -1,4 +1,3 @@
-import React from "react";
 import RippleButtonV1 from "./component";
 
 const RippleButtonUsageV1 = () => {

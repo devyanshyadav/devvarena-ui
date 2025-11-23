@@ -1,4 +1,3 @@
-import React from "react";
 import BaseInputV1 from "./component";
 import { Search, Mail, Eye, Lock } from "lucide-react";
 

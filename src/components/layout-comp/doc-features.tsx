@@ -1,4 +1,3 @@
-import React from "react";
 import { Blocks, Code2, Terminal } from "lucide-react";
 
 const DocFeatures = () => {
